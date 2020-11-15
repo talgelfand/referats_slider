@@ -1,6 +1,7 @@
 'use strict';
-var slides = document.querySelectorAll('.slide'), prev = document.querySelector('.prev'), next = document.querySelector('.next'), total = document.querySelector('.counter__total'), current = document.querySelector('.counter__current');
+var slides = document.querySelectorAll('.slide'), prev = document.querySelector('.prev'), next = document.querySelector('.next'), total = document.querySelector('.counter__total'), current = document.querySelector('.counter__current'), consoleMessage = "This is my TypeScript slider";
 var slideIndex = 1;
+console.log(consoleMessage);
 showSlides(slideIndex);
 // total.textContent = slides.length;
 total.textContent = (slides.length).toString();
@@ -12,10 +13,9 @@ function showSlides(n) {
     if (n < 1) {
         slideIndex = slides.length;
     }
-    // slides.forEach(item => item.style.display = 'none');
-    slides.forEach(function (item) { return item.classList.add("display_none"); });
-    // slides[slideIndex - 1].style.display = 'block';
-    slides[slideIndex - 1].classList.add("display_block");
+    slides.forEach(function (item) { return item.classList.add("hide"); });
+    slides.forEach(function (item) { return item.classList.remove("show"); });
+    slides[slideIndex - 1].classList.add("show");
     current.textContent = slideIndex.toString();
     console.log("Current slide: " + slideIndex);
 }

@@ -4,9 +4,12 @@ const slides = document.querySelectorAll('.slide'),
       prev: Element = document.querySelector('.prev'),
       next: Element = document.querySelector('.next'),
       total: Element = document.querySelector('.counter__total'),
-      current: Element = document.querySelector('.counter__current');
+      current: Element = document.querySelector('.counter__current'),
+      consoleMessage: string = "This is my TypeScript slider";
 
 let slideIndex: number = 1;
+
+console.log(consoleMessage);
 
 showSlides(slideIndex);
 
@@ -23,13 +26,10 @@ function showSlides(n: number) {
         slideIndex = slides.length;
     }
 
-    // slides.forEach(item => item.style.display = 'none');
+    slides.forEach(item => item.classList.add("hide"));
+    slides.forEach(item => item.classList.remove("show"));
 
-    slides.forEach(item => item.classList.add("display_none"));
-
-    // slides[slideIndex - 1].style.display = 'block';
-
-    slides[slideIndex - 1].classList.add("display_block");
+    slides[slideIndex - 1].classList.add("show");
 
     current.textContent = slideIndex.toString();
     console.log(`Current slide: ${slideIndex}`);
